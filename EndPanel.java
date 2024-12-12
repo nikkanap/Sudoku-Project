@@ -87,10 +87,8 @@ public class EndPanel extends JPanel implements ActionListener {
 		if (e.getSource() == save) {
 			String filename = difficultyStr + ".txt";
 			try {
-				if (new File(filename).createNewFile())
-					System.out.println("File created: " + filename);
-				else
-					System.out.println("File already exists");
+				if (!(new File(filename).exists()))
+					new File(filename).createNewFile();
 			} catch (IOException e1) {
 				e1.printStackTrace();
 			}
