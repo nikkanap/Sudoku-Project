@@ -84,6 +84,15 @@ public class PausePanel extends JPanel implements ActionListener {
 			frame.add(new GamePanel(frame, gf, time, difficulty, 5));
 		} else {
 			try {
+				File file = new File("continuedgame.txt");
+				if(file.exists())
+					file.delete();
+				file.createNewFile();
+			} catch(IOException e1) {
+				e1.printStackTrace();
+			}
+			
+			try {
 				FileWriter fw = new FileWriter("continuedgame.txt", true);
 				this.writeLinkedListToFile(fw, gf.getToSolveFormat());
 				this.writeLinkedListToFile(fw, gf.getToSolve());
